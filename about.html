@@ -1,0 +1,273 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Rajasthan POI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .hero-header {
+      position: relative;
+      height: 70vh;
+      background: url('https://images.unsplash.com/photo-1571687949920-f292f90b9b24?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffd54f;
+    }
+
+    .hero-content {
+      text-align: center;
+      margin-bottom: 4rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem 3rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #d84315;
+      margin-bottom: 1rem;
+    }
+
+    .intro,
+    .closing {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .feature-box {
+      background: linear-gradient(135deg, #fdd835, #ffb74d);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .feature-box img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #263238;
+    }
+
+    .feature-box p {
+      font-size: 1rem;
+      color: #424242;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #0d47a1;
+      color: white;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-header">
+    <div class="overlay"></div>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.php"><img src="logo111.png" alt="Rajasthan POI Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="in.html">Add POI</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1>Discover Rajasthan</h1>
+      <p>Your gateway to timeless beauty & hidden gems</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="about-section">
+      <h2 class="section-title">Explore Rajasthan by Categories</h2>
+      <p class="intro">
+        Discover the diverse facets of Rajasthan through categorized points of interest—from cuisine and culture to wellness, education, and leisure.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Food & Dining">
+          <h3>Food & Dining</h3>
+          <p>Experience Rajasthan’s traditional thalis, street food, and royal cuisine.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920212.png" alt="Beverages">
+          <h3>Beverages</h3>
+          <p>From lassi to local brews, quench your thirst the Rajasthani way.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/139/139899.png" alt="Accommodations">
+          <h3>Accommodations</h3>
+          <p>Stay in palaces, heritage hotels, and cozy homestays.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="Shopping">
+          <h3>Shopping & Retail</h3>
+          <p>Shop for handicrafts, textiles, jewelry, and souvenirs in vibrant markets.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/854/854894.png" alt="Outdoor Recreation">
+          <h3>Outdoor & Recreation</h3>
+          <p>From camel rides to desert safaris and nature treks, explore the outdoors.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/3103/3103454.png" alt="Arts & Entertainment">
+          <h3>Arts & Entertainment</h3>
+          <p>Immerse in folk dance, music, theatre, and visual arts.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="Health & Fitness">
+          <h3>Health & Fitness</h3>
+          <p>Yoga centers, spas, wellness retreats, and fitness clubs.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/168/168812.png" alt="Transport">
+          <h3>Travel & Transport</h3>
+          <p>All about buses, trains, airports, and local transportation options.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Education">
+          <h3>Educational Institutions</h3>
+          <p>Schools, colleges, libraries, and learning hubs across the state.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Professional">
+          <h3>Professional / Office</h3>
+          <p>Business centers, coworking spaces, and service offices.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/3281/3281305.png" alt="Residential">
+          <h3>Residential</h3>
+          <p>Explore neighborhoods, housing colonies, and gated communities.</p>
+        </div>
+        <div class="feature-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/1995/1995689.png" alt="Cultural & Religious">
+          <h3>Cultural & Religious</h3>
+          <p>Temples, mosques, gurudwaras, churches, and cultural festivals.</p>
+        </div>
+      </div>
+
+      <p class="closing">
+        Rajasthan POI Explorer is your curated guide to every color, sound, and flavor of this incredible land. Come explore, share, and celebrate Rajasthan with us!
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rajasthan POI Explorer. Crafted with ❤️ for Rajasthan lovers.</p>
+  </footer>
+</body>
+</html>
