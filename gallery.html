@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Video Gallery - POI Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #dfe9f3);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(to right, #f44336, #ff9800);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* District Section */
+        .district {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            animation: fadeIn 0.8s ease-in-out;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .district:hover {
+            background-color: #f9fbe7;
+            transform: translateY(-5px);
+        }
+
+        .district h2 {
+            font-size: 1.8rem;
+            color: #0d47a1;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #0d47a1;
+            color: white;
+            padding: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 1024px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .district h2 {
+                font-size: 1.6rem;
+            }
+
+            video {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .district {
+                padding: 1rem;
+            }
+
+            .district h2 {
+                font-size: 1.4rem;
+            }
+
+            video {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .header p {
+                font-size: 0.95rem;
+            }
+
+            .district h2 {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Video Gallery</h1>
+        <p>Experience Rajasthan through curated district videos</p>
+    </div>
+
+    <div class="container" id="videoGallery"></div>
+
+    <footer>
+        &copy; 2025 POI Web. Discover Rajasthan like never before.
+    </footer>
+
+    <script>
+        const districts = [
+            "Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara",
+            "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur",
+            "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu",
+            "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand",
+            "Sawai Madhopur", "Sikar", "Sirohi", "Sri Ganganagar", "Tonk", "Udaipur"
+        ];
+
+        const container = document.getElementById('videoGallery');
+
+        districts.forEach(district => {
+            const html = `
+                <div class="district">
+                    <h2>${district}</h2>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="videos/${district}.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        });
+    </script>
+
+</body>
+</html>
