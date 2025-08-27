@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input New POI Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .info {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* input[type="submit"] {
+            background-color: #ccc;
+            color: white;
+            border: none;
+            cursor: not-allowed;
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        input[type="submit"].enabled {
+            background-color: #4CAF50;
+            cursor: pointer;
+        } */
+
+
+
+        input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+        input[type="submit"].enabled:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 450px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+
+        .subcategory {
+            display: none;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+
+    <script>
+        function validateImageSize(input) {
+            const maxSize = 2 * 1024 * 1024; // 2MB
+            if (input.files && input.files[0].size > maxSize) {
+                alert("Image size exceeds 2MB. Please choose a smaller image.");
+                input.value = "";
+                return false;
+            }
+            return true;
+        }
+
+        function showSubcategories() {
+            const category = document.getElementById("category").value;
+            const subcategoryDivs = document.querySelectorAll(".subcategory");
+
+            subcategoryDivs.forEach(div => {
+                div.style.display = 'none';
+            });
+
+            if (category) {
+                const selectedSubcategoryDiv = document.getElementById("subcategory-" + category);
+                if (selectedSubcategoryDiv) {
+                    selectedSubcategoryDiv.style.display = 'block';
+                }
+            }
+        }
+
+        // Simulate admin approval for demo (remove in real deployment)
+        function enableSubmit() {
+            const submitButton = document.getElementById("submitBtn");
+            submitButton.disabled = false;
+            submitButton.classList.add("enabled");
+            submitButton.classList.remove("disabled");
+            submitButton.style.cursor = "pointer";
+        }
+    </script>
+</head>
+
+
+
+
+
+
+<body>
+    <a href="index.php">
+        <img src="logo11.jpg" alt="Logo" class="logo">
+    </a>
+
+    <div class="container">
+        <h2>Input New POI Data</h2>
+        <form method="post" action="submit_poi_pending.php" enctype="multipart/form-data">
+            
+            <label for="district">District:</label>
+            <select name="district" id="district" required>
+                <option value="">Select District</option>
+                <option value="Ajmer">Ajmer</option>
+                <option value="Alwar">Alwar</option>
+                <option value="Banswara">Banswara</option>
+                <option value="Baran">Baran</option>
+                <option value="Barmer">Barmer</option>
+                <option value="Bharatpur">Bharatpur</option>
+                <option value="Bhilwara">Bhilwara</option>
+                <option value="Bikaner">Bikaner</option>
+                <option value="Bundi">Bundi</option>
+                <option value="Chittorgarh">Chittorgarh</option>
+                <option value="Churu">Churu</option>
+                <option value="Dausa">Dausa</option>
+                <option value="Dholpur">Dholpur</option>
+                <option value="Dungarpur">Dungarpur</option>
+                <option value="Hanumangarh">Hanumangarh</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jaisalmer">Jaisalmer</option>
+                <option value="Jalore">Jalore</option>
+                <option value="Jhalawar">Jhalawar</option>
+                <option value="Jhunjhunu">Jhunjhunu</option>
+                <option value="Jodhpur">Jodhpur</option>
+                <option value="Karauli">Karauli</option>
+                <option value="Kota">Kota</option>
+                <option value="Nagaur">Nagaur</option>
+                <option value="Pali">Pali</option>
+                <option value="Pratapgarh">Pratapgarh</option>
+                <option value="Rajsamand">Rajsamand</option>
+                <option value="Sawai Madhopur">Sawai Madhopur</option>
+                <option value="Sikar">Sikar</option>
+                <option value="Sirohi">Sirohi</option>
+                <option value="Sri Ganganagar">Sri Ganganagar</option>
+                <option value="Tonk">Tonk</option>
+                <option value="Udaipur">Udaipur</option>
+            </select>
+
+            <label for="category">Category:</label>
+            <select name="category" id="category" required onchange="showSubcategories()">
+                <option value="">Select Category</option>
+                <option value="Food and Dining">Food and Dining</option>
+                <option value="Beverages">Beverages</option>
+                <option value="Accommodations">Accommodations</option>
+                <option value="Outdoor and Recreation">Outdoor and Recreation</option>
+                <option value="Shopping and Retail">Shopping and Retail</option>
+                <option value="Arts and Entertainment">Arts and Entertainment</option>
+                <option value="Health and Fitness">Health and Fitness</option>
+                <option value="Travel and Transport">Travel and Transport</option>
+                <option value="Educational Institutions">Educational Institutions</option>
+                <option value="Professional/Office">Professional/Office</option>
+                <option value="Residential">Residential</option>
+                <option value="Cultural and Religious">Cultural and Religious</option>
+            </select>
+
+            <!-- All Subcategory Divs (same as in your input, with typo fixes) -->
+            <div id="subcategory-Food and Dining" class="subcategory">
+                <label for="foodSubcategory">Food Subcategory:</label>
+                <select name="foodSubcategory" id="foodSubcategory">
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Kachori Stall">Kachori Stall</option>
+                    <option value="Pani Puri Stall">Pani Puri Stall</option>
+                    <option value="Dessert Shop">Dessert Shop</option>
+                    <option value="Fast Food">Fast Food</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Beverages" class="subcategory">
+                <label for="beveragesSubcategory">Beverages Subcategory:</label>
+                <select name="beveragesSubcategory" id="beveragesSubcategory">
+                    <option value="Tea House">Tea House</option>
+                    <option value="Coffee Shop">Coffee Shop</option>
+                    <option value="Juice Bar">Juice Bar</option>
+                    <option value="Lassi Stalls">Lassi Stalls</option>
+                    <option value="Local Chai Shop">Local Chai Shop</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Accommodations" class="subcategory">
+                <label for="accommodationSubcategory">Accommodation Subcategory:</label>
+                <select name="accommodationSubcategory" id="accommodationSubcategory">
+                    <option value="Hotels">Hotels</option>
+                    <option value="Heritage Havelis">Heritage Havelis</option>
+                    <option value="Luxury Resorts">Luxury Resorts</option>
+                    <option value="Camps">Camps</option>
+                    <option value="Boutique Hotels">Boutique Hotels</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Outdoor and Recreation" class="subcategory">
+                <label for="outdoorSubcategory">Outdoor Subcategory:</label>
+                <select name="outdoorSubcategory" id="outdoorSubcategory">
+                    <option value="Forts">Forts</option>
+                    <option value="Palaces">Palaces</option>
+                    <option value="Gardens">Gardens</option>
+                    <option value="Wildlife Sanctuaries">Wildlife Sanctuaries</option>
+                    <option value="Lakes">Lakes</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Shopping and Retail" class="subcategory">
+                <label for="shoppingSubcategory">Shopping Subcategory:</label>
+                <select name="shoppingSubcategory" id="shoppingSubcategory">
+                    <option value="Textile Shops">Textile Shops</option>
+                    <option value="Handicraft Stores">Handicraft Stores</option>
+                    <option value="Jewelry Bazaars">Jewelry Bazaars</option>
+                    <option value="Spices and Tea Stores">Spices and Tea Stores</option>
+                    <option value="Local Market">Local Market</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Arts and Entertainment" class="subcategory">
+                <label for="artsSubcategory">Arts and Entertainment Subcategory:</label>
+                <select name="artsSubcategory" id="artsSubcategory">
+                    <option value="Cultural Festivals">Cultural Festivals</option>
+                    <option value="Museums">Museums</option>
+                    <option value="Art Galleries">Art Galleries</option>
+                    <option value="Theater">Theater</option>
+                    <option value="Cinema">Cinema</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Health and Fitness" class="subcategory">
+                <label for="healthSubcategory">Health and Fitness Subcategory:</label>
+                <select name="healthSubcategory" id="healthSubcategory">
+                    <option value="Gym">Gym</option>
+                    <option value="Spa">Spa</option>
+                    <option value="Yoga Centres">Yoga Centres</option>
+                    <option value="Health Clinic">Health Clinic</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Travel and Transport" class="subcategory">
+                <label for="travelSubcategory">Travel and Transport Subcategory:</label>
+                <select name="travelSubcategory" id="travelSubcategory">
+                    <option value="Train Stations">Train Stations</option>
+                    <option value="Bus Stations">Bus Stations</option>
+                    <option value="Airports">Airports</option>
+                    <option value="Taxi Services">Taxi Services</option>
+                    <option value="Local Transport">Local Transport</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Educational Institutions" class="subcategory">
+                <label for="educationSubcategory">Educational Subcategory:</label>
+                <select name="educationSubcategory" id="educationSubcategory">
+                    <option value="University">University</option>
+                    <option value="College">College</option>
+                    <option value="School">School</option>
+                    <option value="Libraries">Libraries</option>
+                    <option value="Heritage Learning Center">Heritage Learning Center</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Professional/Office" class="subcategory">
+                <label for="officeSubcategory">Office Subcategory:</label>
+                <select name="officeSubcategory" id="officeSubcategory">
+                    <option value="Corporate Office">Corporate Office</option>
+                    <option value="Conference Halls">Conference Halls</option>
+                    <option value="Event Venues">Event Venues</option>
+                    <option value="Business Centers">Business Centers</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Residential" class="subcategory">
+                <label for="residentialSubcategory">Residential Subcategory:</label>
+                <select name="residentialSubcategory" id="residentialSubcategory">
+                    <option value="Heritage Havelis">Heritage Havelis</option>
+                    <option value="Home Styles">Home Styles</option>
+                    <option value="Local Residences">Local Residences</option>
+                    <option value="Traditional Courtyard Homes">Traditional Courtyard Homes</option>
+                </select>
+            </div>
+
+            <div id="subcategory-Cultural and Religious" class="subcategory">
+                <label for="culturalSubcategory">Cultural Subcategory:</label>
+                <select name="culturalSubcategory" id="culturalSubcategory">
+                    <option value="Temple">Temple</option>
+                    <option value="Religious Pilgrimages">Religious Pilgrimages</option>
+                    <option value="Mosques">Mosques</option>
+                </select>
+            </div>
+
+            <label for="area">Area:</label>
+            <input type="text" name="area" id="area">
+
+            <label for="postcode">Postcode:</label>
+            <input type="text" name="postcode" id="postcode">
+
+            <label for="region">Region:</label>
+            <input type="text" name="region" id="region">
+
+            <label for="language">Language:</label>
+            <input type="text" name="language" id="language">
+
+            <label for="website">Website:</label>
+            <input type="url" name="website" id="website">
+
+            <label for="latitude">Latitude:</label>
+            <input type="number" step="any" name="latitude" id="latitude" required>
+
+            <label for="longitude">Longitude:</label>
+            <input type="number" step="any" name="longitude" id="longitude" required>
+
+            <label for="LocationName">Location Name:</label>
+            <input type="text" name="LocationName" id="LocationName" required>
+
+            <label for="image">Image (max 2MB):</label>
+            <input type="file" name="image" id="image" accept="image/*" onchange="validateImageSize(this)" required>
+            <span style="font-size: smaller; color: grey;">(JPG, PNG, GIF)</span>
+
+            <input type="submit" id="submitBtn" value="Submit for Admin Approval">
+
+        </form>
+    </div>
+</body>
+</html>
